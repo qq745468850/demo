@@ -1,0 +1,48 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>两个DIV并排</title> 
+<style> 
+.div-a{ float:left;width:49%;border:1px solid #F00} 
+.div-b{ float:left;width:49%;border:1px solid #000} 
+</style> 
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#target").click(function(){
+       alert("Hello World  click");
+	    //先通过ajax去后台请求数据，成功后携带数据进行跳转
+            
+            
+			 var obj = {"orderNum": "202206201056298464742215680","payTypeMark": "AlipayMobile"};
+			$.ajax({
+					headers: {
+					   "Authorization": "Bearer 329b5aa2-0cab-4293-88af-7f07932de617"
+					  },
+                    url: "http://192.168.6.11:8000/gateway/orders/pay/orderPay",
+                    data: JSON.stringify(obj), //方法二   测试ok
+                    method: "post",
+                    dataType: "json",
+                    contentType: 'application/json',
+                    success: function (data) {
+                                            console.log(data);
+                    console.log(data.data);
+					window.location.href=data.data
+					$("#divId").html(data.data);
+                    }
+
+                });
+  });
+
+});
+
+</script>
+
+</head> 
+<body> 
+
+ <button id="target">test</button>
+ <div id="divId"></div>
+</body> 
+</html> 

@@ -1,0 +1,47 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>两个DIV并排</title> 
+<style> 
+.div-a{ float:left;width:49%;border:1px solid #F00} 
+.div-b{ float:left;width:49%;border:1px solid #000} 
+</style> 
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+       alert("Hello World  click111");
+	    //先通过ajax去后台请求数据，成功后携带数据进行跳转
+			 var obj = {"orderNum": "202206211056626354402889728","payTypeMark": "AlipayMobile"};
+			$.ajax({
+					headers: {
+					   "Authorization": "Bearer f58a9b42-a794-4bb0-baf2-e88ff1c9b45c"
+					  },
+                    url: "http://192.168.5.127:8013/crm/system/group/text?id="+new Date().getTime(),
+                    method: "get",
+                    success: function (data) {
+                                            console.log(data);
+                    console.log(data.data);
+					//window.location.href=data.data
+					// window.open(data.data,'_blank');
+					var oA = document.createElement("a"); //创建a标签
+					  oA.href = data.data; //添加 href 属性
+					  oA.target = "_blank"; //添加 target 属性
+					  oA.click(); //模拟点击
+					  alert("点击")
+					$("#divId").html(data.data);
+                    }
+
+                });
+  });
+
+</script>
+
+</head> 
+<body> 
+
+ <button id="target">test213</button>
+ <div id="divId"></div>
+</body> 
+</html> 

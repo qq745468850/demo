@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>websocket通讯</title>
+</head>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+<script>
+    let socket;
+    function openSocket() {
+	//60.216.20.210:8000/gateway
+        //const socketUrl = "ws://192.168.7.236:8005/knowledge/learningRateServer?userId=123&clientTypeCode=IOS";
+//const socketUrl = "ws://60.216.20.210:8000/gateway/knowledge/learningRateServer?userId=1057493197095178253&clientTypeCode=M&chapterId=1082158912423071744&classId=1088302900423168000&"+
+		//				   "courseId=1082114525198553088&courseNameId=1082114525198553088&dateYear=2022&nodeId=&semesterId=111361";
+		const socketUrl = "ws://192.168.7.43:8013/crm/websocketServer?userId=1057493197095178253&clientTypeCode=M";
+        //const socketUrl = "ws://192.168.7.236:8005/knowledge/learningRateServer?userId=123";
+        //const socketUrl = "ws://192.168.5.162:8000/gateway/knowledge/learningRateServer?userId=" + $("#userId").val();
+		//const socketUrl = "wss://m2.xlcwx.com/gateway/knowledge/learningRateServer?userId=" + $("#userId").val();
+		//const socketUrl = "wss://www.xlcwx.com/gateway/knowledge/learningRateServer?userId=" + $("#userId").val();
+		//const socketUrl = "ws://192.168.7.213/gateway/knowledge/learningRateServer?userId=" + $("#userId").val();
+        console.log(socketUrl);
+        if(socket!=null){
+            socket.close();
+            socket=null;
+        }
+        socket = new WebSocket(socketUrl);
+        //打开事件
+        socket.onopen = function() {
+            console.log("websocket已打开");
+        };
+        //获得消息事件
+        socket.onmessage = function(msg) {
+            console.log(msg.data);
+            //发现消息进入,开始处理前端触发逻辑
+        };
+        //关闭事件
+        socket.onclose = function() {
+            console.log("websocket已关闭");
+        };
+        //发生了错误事件
+        socket.onerror = function() {
+            console.log("websocket发生了错误");
+        }
+    }
+	function sleep(n) { //n表示的毫秒数
+		var start = new Date().getTime();
+		while (true) if (new Date().getTime() - start > n) break;
+	}
+
+    function sendMessage() {
+	var classId = sj(2,1);
+	
+	var courseId = sj(2,1);
+	
+	var chapterId = sj(2,1);
+	
+	var nodeId = sj(3,1);
+	
+	var userId = '1046298555836666666';
+	var currentSeeSec = 1;
+/**    for (var i=0;i<10;i++)
+    {
+        sleep(200);
+        var classId = 111;
+        var courseId = 951753;
+        var chapterId = 951753;
+        var nodeId = 951753;
+        var userId = '1046298555836666666';
+        var currentSeeSec = i;
+        socket.send('{"classId":"'+classId+'","courseId":"'+courseId+'","chapterId":"'+chapterId+'","nodeId":"'+nodeId+'","userId":"'+userId+'","videoDuration":"123","currentSeeSec":"'+currentSeeSec+
+        '","videoTypeCode":"2","multiple":'+i+',"semesterId":"123","clientType":"123","liveStatus":"123","liveStartTime":"2022-06-09 16:32:47","courseNameId":"12","dateYear":"2022"}');
+    }
+
+**/
+
+	// for (var i=0;i<110;i++)
+	// {
+	// 	var classId = sj(2,1);
+	// 	var courseId = sj(2,1);
+	// 	var chapterId = sj(2,1);
+	// 	var nodeId = sj(3,1);
+	// 	var userId = '1046298555836666666';
+	// 	var currentSeeSec = sj(100,0);
+	// 	socket.send('{"classId":"'+classId+'","courseId":"'+courseId+'","chapterId":"'+chapterId+'","nodeId":"'+nodeId+'","userId":"'+userId+'","videoDuration":"123","currentSeeSec":"'+currentSeeSec+
+	// 	'","videoTypeCode":"2","multiple":"123","semesterId":"123","clientType":"123","liveStatus":"123","liveStartTime":"2022-06-09 16:32:47","courseNameId":"12","dateYear":"2022"}');
+	// }
+	/**sleep(1000);
+	setInterval(function() { 
+socket.send('{"classId":"'+classId+'","courseId":"'+courseId+'","chapterId":"'+chapterId+'","nodeId":"'+nodeId+'","userId":"'+userId+'","videoDuration":"123","currentSeeSec":"'+currentSeeSec+'","videoTypeCode":"2","multiple":"123","semesterId":"123","clientType":"123","liveStatus":"123","liveStartTime":"2022-06-09 16:32:47"}');
+    },1000);**/
+	
+	
+       
+	//socket.send('{"classId":"'+classId+'","courseId":"'+courseId+'","chapterId":"'+chapterId+'","nodeId":"'+nodeId+'","userId":"'+userId+'","videoDuration":"123","currentSeeSec":"'
+		//+currentSeeSec+'","videoTypeCode":"2","multiple":"123","semesterId":"123","clientType":"123","liveStatus":"1","liveStartTime":"2022-06-19 16:32:47","courseNameId":"123","dateYear":"2022"}');
+	socket.send('{"classId":"1052383381817397248","courseId":"1052382378791538688","chapterId":"1052745898892726272","nodeId":"1052746670401392640","userId":"1057493197095178253","videoDuration":"123","currentSeeSec":'
+	+currentSeeSec+',"videoTypeCode":"2","multiple":"1.0","semesterId":"84","clientType":"y","liveStatus":"0","liveStartTime":"2022-06-19 16:32:47","courseNameId":"437","dateYear":"2022"}');
+		
+		
+// socket.send('{"toUserId":"'+$("#toUserId").val()+'","contentText":"'+$("#contentText").val()+'"}');		
+//        console.log('{"toUserId":"'+$("#toUserId").val()+'","contentText":"'+$("#contentText").val()+'"}');
+    }
+	function test(){
+//		socket.send('{"toUserId":"'+$("#toUserId").val()+'","contentText":"'+new Date()+'"}');
+socket.send('ping');
+	}
+	function sj(x,y) {
+    //x上限，y下限     
+    var rand = parseInt(Math.random() * (x - y + 1) + y);
+	return rand;
+}
+</script>
+<body>
+
+<div id="drawPanel"></div>
+
+
+<p>【socket开启者的ID信息】：<div><input id="userId" name="userId" type="text" value="10"></div>
+<p>【客户端向服务器发送的内容】：<div><input id="toUserId" name="toUserId" type="text" value="20">
+    <input id="contentText" name="contentText" type="text" value="hello websocket"></div>
+<p>【操作】：<div><a onclick="openSocket()">开启socket</a></div>
+<p>【操作】：<div><a onclick="test()">发送消息</a></div>
+</body>
+
+</html>

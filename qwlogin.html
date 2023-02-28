@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>两个DIV并排</title> 
+<div id="code"></div>
+<style> 
+.div-a{ float:left;width:49%;border:1px solid #F00} 
+.div-b{ float:left;width:49%;border:1px solid #000} 
+</style> 
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://rescdn.qqmail.com/node/ww/wwopenmng/js/sso/wwLogin-1.0.0.js"></script>
+<script type="text/javascript">
+  window.WwLogin({ 
+          id: 'code', // 登录页面显示二维码的容器id
+          appid: 'ww0625a82c73c4e549',// 企业微信的CorpID，在企业微信管理端查看
+          agentid: 1000002,// 授权方的网页应用id，在具体的网页应用中查看
+          redirect_uri: 'http://192.168.7.213:8200/#/login?redirect=/collegeCenter/knowledge/examPaper&params={}',// 重定向的地址，需要进行encode
+          state: "111"
+    })
+
+</script>
+
+</head> 
+<body> 
+
+ <button id="target">test213</button>
+ <div id="divId"></div>
+</body> 
+</html> 

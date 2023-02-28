@@ -1,0 +1,20 @@
+<html>
+</html>
+<script type="text/javascript">
+	alert(getMonthStartEnd("202402"))
+	function getMonthStartEnd(vars){
+    var str = '';
+    if(vars!=null&&vars!=''){
+        var nyYear=vars.slice(0,4);
+        var nyMonth=vars.slice(4,vars.length);
+        var firstDay = new Date(nyYear,nyMonth-1);
+        var lastDay = new Date(new Date(nyYear,nyMonth).valueOf()-60*60*1000*24);
+        function datasFormat(d){
+            var datetime=d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+            return datetime;
+        }
+        str = datasFormat(firstDay) + "/" + datasFormat(lastDay)
+     }
+    return str
+}
+</script>

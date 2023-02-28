@@ -1,1 +1,0 @@
-import{aJ as i,aM as t}from"./webClient-e9003e98.js";class h extends i{async getCourseLectureList(e,a,s,r){let c=this.combin({pageSize:e,pageNum:a},{kindId:s,projiectId:r});return await t({url:"/outside/teachBasics/qbsTeacherInfo",method:"POST",data:c})}async getCourseTeacherById(e){return await t({url:`/outside/teachBasics/getTeacherInfoById?teacherId=${e}`})}}export{h as T};

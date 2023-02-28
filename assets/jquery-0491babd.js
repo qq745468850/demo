@@ -1,4 +1,4 @@
-import{c as ni}from"./_commonjsHelpers-725317a4.js";var Bt={},ri={get exports(){return Bt},set exports(gt){Bt=gt}};/*!
+import{c as ni}from"./commonjsHelpers-725317a4.js";var Bt={},ri={get exports(){return Bt},set exports(gt){Bt=gt}};/*!
  * jQuery JavaScript Library v3.6.3
  * https://jquery.com/
  *

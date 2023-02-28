@@ -1,4 +1,4 @@
-import{c as $,g as J}from"./_commonjsHelpers-725317a4.js";var R={},K={get exports(){return R},set exports(_){R=_}};/*!
+import{c as $,g as J}from"./commonjsHelpers-725317a4.js";var R={},K={get exports(){return R},set exports(_){R=_}};/*!
  * clipboard.js v2.0.11
  * https://clipboardjs.com/
  *
